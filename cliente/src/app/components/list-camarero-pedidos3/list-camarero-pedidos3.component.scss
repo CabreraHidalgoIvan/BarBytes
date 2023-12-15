@@ -1,0 +1,99 @@
+// Definir variables de color
+$color-1: #D95D39;
+$color-2: #FFAE9C;
+$color-3: #FFFFFF;
+$color-4: #FFF8E7;
+$color-5: #D9D9D9;
+
+.example-card {
+    width: 20%;
+    margin: 2.5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+  .mat-mdc-card-header {
+    display: flex;
+    padding: 16px 16px 0;
+    justify-content: left;
+}
+
+table {
+    width: 100%;
+  }
+
+#mainCard{
+  background-color: #FFF8E7;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+body{
+  background-color: #D9D9D9;
+}
+
+
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 90%;
+  margin-right: 10px;
+}
+
+.mat-toolbar{
+  background-color: $color-3;
+  color: black;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+  background-color: $color-1;
+}
+
+// td, th {
+//   width: 25%;
+// }
+
+main{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+
+.btnEdit{
+    color: rgb(31, 31, 162)
+}
+
+.btnDelete{
+    color: #FFFFFF;
+}
+
+.boton-eliminado{
+    background-color:rgb(211, 13, 13);
+    margin: 2.5%;
+    color: #FFFFFF;
+}
+
+.boton-pagado{
+    background-color: green;
+    margin: 2.5%;
+    color: #FFFFFF;
+
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: white;
+}
+
+#divArriba{
+  display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+#divAbajo{
+  display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}

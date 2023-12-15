@@ -1,0 +1,36 @@
+.mat-toolbar {
+  background-color: #FFFFFF;
+  color: black;
+}
+
+.example-card {
+  max-width: 15%;
+  margin: 5%;
+}
+
+mat-card-title {
+  font-size: 2.5em;
+}
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 16px 16px 0;
+  justify-content: center;
+}
+
+img {
+  width: 75%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mdc-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+}

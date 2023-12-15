@@ -1,0 +1,55 @@
+<mat-toolbar color="primary" >
+    <span routerLink="/dashboard-camareros">LISTADO DE PEDIDOS MESA 4</span>
+</mat-toolbar>
+
+
+<main id="mainCard" >
+
+  <!-- Pedidos pendientes -->
+<div id="divArriba">
+  <mat-card class="example-card" *ngFor="let element of pedidosPendientes">
+    <mat-card-header>
+      <mat-card-title>Pedido de {{ element.id_cliente }}</mat-card-title>
+      <mat-card-subtitle>Estado: {{ element.estado_pedido }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><b>Hora pedido:</b>{{element.hora_pedido | date:'HH:mm:ss'}}</p>  
+      <p><b>Platos Ordenados:</b></p> 
+      <ul>
+        <li *ngFor="let value of element.lista_platos_ordenados">{{value.nombre}}</li>
+      </ul>
+      <p><b>Comentarios:</b> {{element.comentarios}}</p>
+      <p><b>Precio total:</b> {{ element.precioTotal}} €</p> 
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="marcarComoPagado(element._id)" mat-button  class="boton-pagado"> Marcar como pagado <mat-icon  class="btnDelete" matTooltip="Eliminar">check</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- Pedidos pagados -->
+<div id="divAbajo">
+  <mat-card class="example-card" *ngFor="let element of pedidosPagados">
+    <mat-card-header>
+      <mat-card-title>Pedido de {{ element.id_cliente }}</mat-card-title>
+      <mat-card-subtitle>Estado: {{ element.estado_pedido }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><b>Hora pedido:</b>{{element.hora_pedido | date:'HH:mm:ss'}}</p>  
+      <p><b>Platos Ordenados:</b></p> 
+      <ul>
+        <li *ngFor="let value of element.lista_platos_ordenados">{{value.nombre}}</li>
+      </ul>
+      <p><b>Comentarios:</b> {{element.comentarios}}</p>
+      <p><b>Precio total:</b> {{ element.precioTotal}} €</p> 
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="marcarComoPagado(element._id)" mat-button  class="boton-pagado"> Marcar como pagado <mat-icon  class="btnDelete" matTooltip="Eliminar">check</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+        
+
+</main>

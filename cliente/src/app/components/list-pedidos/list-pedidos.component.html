@@ -1,0 +1,74 @@
+<mat-toolbar color="primary" >
+    <span routerLink="">LISTADO DE PEDIDOS</span>
+</mat-toolbar>
+
+<mat-card id="mainCard">
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filtro" #input>
+        </mat-form-field>
+        <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z15">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="estado_pedido" >
+              <th mat-sort-header mat-header-cell *matHeaderCellDef> Estado pedido </th>
+              <td mat-cell *matCellDef="let element"> {{element.estado_pedido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lista_platos_ordenados">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Platos ordenados </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <ul>
+                        <li *ngFor="let value of element.lista_platos_ordenados">{{value.nombre}} </li>
+                    </ul>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="comentarios">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Comentarios </th>
+                <td mat-cell *matCellDef="let element"> {{element.comentarios}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="precioTotal">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Precio Total </th>
+                <td mat-cell *matCellDef="let element"> {{element.precioTotal}} € </td>
+            </ng-container>
+
+            <ng-container matColumnDef="mesa">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Mesa </th>
+                <td mat-cell *matCellDef="let element"> {{element.mesa}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="hora_pedido">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Hora pedido </th>
+                <td mat-cell *matCellDef="let element"> {{element.hora_pedido | date:'HH:mm:ss'}}</td>
+                
+            </ng-container>
+
+              <ng-container matColumnDef="fecha_pedido">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Fecha pedido</th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha_pedido | date:'dd-MM-yyyy'}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="acciones">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td class="acciones" mat-cell *matCellDef="let element">
+                    <mat-icon class="btnDelete" ></mat-icon>
+                    <mat-icon (click)="eliminarPedido(element._id)" class="btnDelete" matTooltip="Eliminar">delete</mat-icon>
+                    <mat-icon class="btnDelete" ></mat-icon>
+                </td>
+              </ng-container>
+                    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+
+

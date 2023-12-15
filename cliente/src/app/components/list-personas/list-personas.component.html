@@ -1,0 +1,60 @@
+<mat-toolbar color="primary" >
+    <span routerLink="">LISTADO DE USUARIOS</span>
+</mat-toolbar>
+
+<mat-card id="mainCard">
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Filtro</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filtro" #input>
+        </mat-form-field>
+        <button class="button" mat-raised-button color="primary" (click)="addEditPersona()"
+            matTooltip="Agregar"
+            aria-label="Button that displays a tooltip when focused or hovered over">
+            Agregar
+        </button>
+        <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z15">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombre" >
+              <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombre </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="psw">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Contraseña </th>
+                <td mat-cell *matCellDef="let element"> {{element.psw}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="rol">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Rol </th>
+                <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+            </ng-container>
+
+              <ng-container matColumnDef="acciones">
+                <th mat-sort-header mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon class="btnEdit" matTooltip="Editar" (click)="addEditPersona(element._id)">edit</mat-icon> 
+                    <mat-icon (click)="eliminarUsuario(element._id)" class="btnDelete" matTooltip="Eliminar">delete</mat-icon>
+                </td>
+              </ng-container>
+          
+           
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+
+

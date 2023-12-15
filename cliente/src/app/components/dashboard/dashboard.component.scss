@@ -1,0 +1,39 @@
+// Definir variables de color
+$color-1: #D95D39;
+$color-2: #FFAE9C;
+$color-3: #FFFFFF;
+$color-4: #FFF8E7;
+$color-5: #D9D9D9;
+
+.example-card {
+    max-width: 15%;
+    margin: 5%;
+  }
+
+  .mat-toolbar{
+    background-color: $color-3;
+    color: black;
+  }
+
+  .mat-mdc-card-header {
+    display: flex;
+    padding: 16px 16px 0;
+    justify-content: center;
+}
+  img{
+    width: 75%;
+    margin-bottom: 5%;
+  }
+
+  main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .mdc-card {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+}

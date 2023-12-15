@@ -1,0 +1,109 @@
+<div class="container">
+    <h2 mat-dialog-title>{{ operacion }} Plato</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="addEditPlato()">
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" matInput placeholder="Nombre">
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+                El nombre es un campo <strong>requerido</strong>.
+            </span>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <input formControlName="descripcion" matInput placeholder="Descripcion">
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('descripcion')?.hasError('required') && form.get('descripcion')?.touched">
+                La descripción es un campo <strong>requerido</strong>.
+            </span>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input type="number" formControlName="precio" matInput placeholder="Precio">
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('precio')?.hasError('required') && form.get('precio')?.touched">
+                El precio es un campo <strong>requerido</strong>.
+            </span>
+        </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="categoriaId">
+                    <mat-option *ngFor="let item of categorias" [value]="item">
+                      {{ item.nombre }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <div class="error">
+                <span *ngIf="form.get('categoriaId')?.hasError('required') && form.get('categoriaId')?.touched">
+                    La categoria del plato es un campo <strong>requerido</strong>.
+                </span>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Categoria 2</mat-label>
+                <mat-select formControlName="categoriaId2">
+                    <mat-option *ngFor="let item of categorias" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Categoria 3</mat-label>
+                <mat-select formControlName="categoriaId3">
+                    <mat-option *ngFor="let item of categorias" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado">
+                  <mat-option *ngFor="let item of estados" [value]="item">
+                    {{ item }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+              <div class="error">
+                <span *ngIf="form.get('estado')?.hasError('required') && form.get('estado')?.touched">
+                    El estado del plato es un campo <strong>requerido</strong>.
+                </span>
+              </div>
+        
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Categorías</mat-label>
+            <input formControlName="categoriaId" matInput placeholder="Categorías">
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('categoriaId')?.hasError('required') && form.get('categoriaId')?.touched">
+                Las categorías son un campo <strong>requerido</strong>.
+            </span>
+        </div> -->
+        <!-- <div>
+            <label>Selecciona categorías</label>
+            <div *ngFor="let categoria of categorias">
+                <input  formControlName="categoriaId" type="checkbox"  value="{{categoria._id}}">
+                {{ categoria.nombre }}
+            </div>
+        </div> -->
+        <button type="button" mat-raised-button (click)="fileInput.click()">Elegir imagen</button>
+            <input  formControlName="img"  hidden (change)="onFileSelected($event)" #fileInput type="file">
+            <span class="file-name">{{selectedFile?.name}}</span>
+          <div class="error">
+            <span *ngIf="form.get('img')?.hasError('required') && form.get('img')?.touched">
+                La imagen es un campo <strong>requerido</strong>.
+            </span>
+          </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button type="button" (click)="cancelar()" >Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>Aceptar</button>
+    </mat-dialog-actions>
+</form>

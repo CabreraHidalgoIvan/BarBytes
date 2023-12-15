@@ -1,0 +1,70 @@
+
+<div class="container">
+    <h2 mat-dialog-title>{{ operacion }} Pedido</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="addEditPedido()">
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field appearance="fill">
+            <mat-label>Estado pedido</mat-label>
+            <mat-select formControlName="estado_pedido">
+                <mat-option *ngFor="let item of estadoPedido" [value]="item">
+                  {{ item }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('estado_pedido')?.hasError('required') && form.get('estado_pedido')?.touched">
+                El estado del pedido es un campo <strong>requerido</strong>.
+            </span>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Lista platos ordenados</mat-label>
+            <input formControlName="lista_platos_ordenados" matInput placeholder="Lista platos ordenados">
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('lista_platos_ordenados')?.hasError('required') && form.get('lista_platos_ordenados')?.touched">
+                La lista de platos ordenados es un campo <strong>requerido</strong>.
+            </span>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Mesa</mat-label>
+            <input type="number" formControlName="mesa" matInput placeholder="Mesa">
+        </mat-form-field>
+        <div class="error">
+            <span *ngIf="form.get('mesa')?.hasError('required') && form.get('mesa')?.touched">
+                La mesa es un campo <strong>requerido</strong>.
+            </span>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Precio total</mat-label>
+            <input formControlName="precioTotal" matInput placeholder="Precio total">
+        </mat-form-field>
+          <div class="error">
+            <span *ngIf="form.get('precioTotal')?.hasError('required') && form.get('precioTotal')?.touched">
+                El precio total es un campo <strong>requerido</strong>.
+            </span>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Comentarios</mat-label>
+            <input formControlName="comentarios" matInput placeholder="Comentarios">
+        </mat-form-field>
+          <div class="error">
+            <span *ngIf="form.get('comentarios')?.hasError('required') && form.get('comentarios')?.touched">
+                Los comentarios es un campo <strong>requerido</strong>.
+            </span>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>ID Cliente</mat-label>
+            <input formControlName="id_cliente" matInput placeholder="ID Cliente">
+        </mat-form-field>
+          <div class="error">
+            <span *ngIf="form.get('id_cliente')?.hasError('required') && form.get('id_cliente')?.touched">
+                La hora del pedido es un campo <strong>requerido</strong>.
+            </span>
+          </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button type="button" (click)="cancelar()" >Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial>Aceptar</button>
+    </mat-dialog-actions>
+</form>
